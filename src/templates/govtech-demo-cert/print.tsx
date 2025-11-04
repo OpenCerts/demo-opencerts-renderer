@@ -11,10 +11,10 @@ export const PrintTemplate: FunctionComponent<TemplateProps<GovtechOpencertsTemp
   handleObfuscation
 }) => (
   <>
-    <CertificateTemplate document={document} handleObfuscation={handleObfuscation}></CertificateTemplate>
+    <CertificateTemplate document={document} handleObfuscation={handleObfuscation} />
     <div style={{ pageBreakAfter: "always" }} />
-    <TranscriptTemplate document={document} handleObfuscation={handleObfuscation}></TranscriptTemplate>
+    <TranscriptTemplate document={document} handleObfuscation={handleObfuscation} />
     <div style={{ pageBreakAfter: "always" }} />
-    <img src="/static/images/yt.png" className="w-100"></img>
+    <img src="/static/images/yt.png" className="w-100" />
   </>
 );
