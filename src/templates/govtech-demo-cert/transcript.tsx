@@ -10,11 +10,31 @@ import govtechLogo from "./common/govtech-logo.png";
 import transcriptBg from "./common/transcript-background.png";
 import { SimplePrivacyFilterBanner } from "./common/simple-privacy-filter-banner";
 
+/** True if document is a W3C Verifiable Credential (not OpenAttestation v3/v4). */
+function isW3CDocument(document: Record<string, unknown>): boolean {
+  if (!document || !document["@context"]) return false;
+  const type = document.type;
+  const hasVerifiableCredential = Array.isArray(type)
+    ? type.includes("VerifiableCredential")
+    : type === "VerifiableCredential";
+  if (!hasVerifiableCredential) return false;
+  if (document.openAttestationMetadata) return false;
+  const ctx = document["@context"];
+  if (
+    (Array.isArray(ctx) && ctx.some((c) => c && String(c).includes("openattestation"))) ||
+    (typeof ctx === "string" && ctx.includes("openattestation"))
+  ) {
+    return false;
+  }
+  return true;
+}
+
 export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechOpencertsTemplateCertificate>> = ({
   document,
   handleObfuscation
 }) => {
   const [editable, setEditable] = useState(false);
+  const isW3C = isW3CDocument((document as unknown) as Record<string, unknown>);
   const documentName = get(document, "name");
   const documentId = get(document, "id");
   const issuanceDate = get(document, "issuedOn");
@@ -31,39 +51,59 @@ export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechOpencert
   const transcriptSection = transcriptData.map((t, i) => (
     <tr key={i}>
       <td>
-        <ObfuscatableValue
-          editable={editable}
-          value={t.courseCode}
-          onObfuscationRequested={() => handleObfuscation(`transcript[${i}].courseCode`)}
-        />
+        {isW3C ? (
+          t.courseCode
+        ) : (
+          <ObfuscatableValue
+            editable={editable}
+            value={t.courseCode}
+            onObfuscationRequested={() => handleObfuscation(`transcript[${i}].courseCode`)}
+          />
+        )}
       </td>
       <td>
-        <ObfuscatableValue
-          editable={editable}
-          value={t.name}
-          onObfuscationRequested={() => handleObfuscation(`transcript[${i}].name`)}
-        />
+        {isW3C ? (
+          t.name
+        ) : (
+          <ObfuscatableValue
+            editable={editable}
+            value={t.name}
+            onObfuscationRequested={() => handleObfuscation(`transcript[${i}].name`)}
+          />
+        )}
       </td>
       <td>
-        <ObfuscatableValue
-          editable={editable}
-          value={t.grade}
-          onObfuscationRequested={() => handleObfuscation(`transcript[${i}].grade`)}
-        />
+        {isW3C ? (
+          t.grade
+        ) : (
+          <ObfuscatableValue
+            editable={editable}
+            value={t.grade}
+            onObfuscationRequested={() => handleObfuscation(`transcript[${i}].grade`)}
+          />
+        )}
       </td>
       <td>
-        <ObfuscatableValue
-          editable={editable}
-          value={t.courseCredit}
-          onObfuscationRequested={() => handleObfuscation(`transcript[${i}].courseCredit`)}
-        />
+        {isW3C ? (
+          t.courseCredit
+        ) : (
+          <ObfuscatableValue
+            editable={editable}
+            value={t.courseCredit}
+            onObfuscationRequested={() => handleObfuscation(`transcript[${i}].courseCredit`)}
+          />
+        )}
       </td>
       <td>
-        <ObfuscatableValue
-          editable={editable}
-          value={t.semester}
-          onObfuscationRequested={() => handleObfuscation(`transcript[${i}].semester`)}
-        />
+        {isW3C ? (
+          t.semester
+        ) : (
+          <ObfuscatableValue
+            editable={editable}
+            value={t.semester}
+            onObfuscationRequested={() => handleObfuscation(`transcript[${i}].semester`)}
+          />
+        )}
       </td>
     </tr>
   ));
@@ -72,7 +112,9 @@ export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechOpencert
     <>
       <PrintWatermark />
       <div className="container">
-        <SimplePrivacyFilterBanner onToggleEditable={() => setEditable(!editable)} className="privacy-banner" />
+        {!isW3C && (
+          <SimplePrivacyFilterBanner onToggleEditable={() => setEditable(!editable)} className="privacy-banner" />
+        )}
         <div
           className="p-2 container"
           style={{
@@ -153,7 +195,7 @@ export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechOpencert
             </div>
           </div>
 
-          {transcriptData !== [] && (
+          {transcriptData.length > 0 && (
             <div className="row mb-4" style={{ paddingLeft: "3%", paddingTop: "5%" }}>
               <div className="root cert-title">
                 <b>Transcript</b>
