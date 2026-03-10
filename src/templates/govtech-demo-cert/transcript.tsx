@@ -21,7 +21,7 @@ function isW3CDocument(document: Record<string, unknown>): boolean {
   if (document.openAttestationMetadata) return false;
   const ctx = document["@context"];
   if (
-    (Array.isArray(ctx) && ctx.some((c) => c && String(c).includes("openattestation"))) ||
+    (Array.isArray(ctx) && ctx.some(c => c && String(c).includes("openattestation"))) ||
     (typeof ctx === "string" && ctx.includes("openattestation"))
   ) {
     return false;
