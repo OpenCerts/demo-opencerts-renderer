@@ -1,12 +1,17 @@
 import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
 import { CertificateTemplate } from "./certificate";
-import { customTemplateCertificate } from "../samples";
+import { customTemplateCertificate, govtechW3cTemplateSample } from "../samples";
 
 <Meta title="MDX|CertificateTemplate" component={CertificateTemplate} />
 
 # CertificateTemplate component
 
 <Description of={CertificateTemplate} />
+
+The template supports two document formats:
+
+1. **Open Attestation** – Legacy signed documents (see "basic sample" story).
+2. **W3C Verifiable Credential** – Documents that use the [W3C Verifiable Credentials](https://www.w3.org/TR/vc-data-model/) data model. The component detects these when the document has `type` including `"VerifiableCredential"`, an `@context` array, and a `credentialSubject` containing the OpenCerts certificate payload. See the "W3C template sample" story below.
 
 # Props
 
@@ -17,5 +22,20 @@ import { customTemplateCertificate } from "../samples";
 <Preview withSource>
   <Story name="basic sample">
     <CertificateTemplate document={customTemplateCertificate} />
+  </Story>
+</Preview>
+
+## W3C Verifiable Credential template
+
+When the document is a W3C Verifiable Credential, the same certificate layout is rendered using the credential’s `credentialSubject` as the certificate data. The expected shape is:
+
+- **Top level:** `@context`, `type: ["VerifiableCredential"]`, `issuer`, `validFrom`, `renderMethod`, `credentialSubject`. Optional: `id`, `proof` (e.g. Data Integrity Proof).
+- **credentialSubject:** OpenCerts certificate fields: `id`, `type: ["OpenCertsCertificate"]`, `name`, `description`, `issuedOn`, `admissionDate`, `graduationDate`, `recipient`, `transcript[]`, `additionalData` (including `certSignatories`).
+
+The sample below uses a full VC with multiple `@context` URLs, a BBS+ proof, and an OpenCerts payload (Opencerts Demo Certificate with transcript and signatory).
+
+<Preview withSource>
+  <Story name="W3C template sample">
+    <CertificateTemplate document={govtechW3cTemplateSample} />
   </Story>
 </Preview>
