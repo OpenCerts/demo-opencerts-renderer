@@ -146,19 +146,6 @@ export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechW3cVerif
           )}
 
           <div className="row">
-            <div className="col">
-              <img
-                className="w-100"
-                style={{
-                  paddingTop: "40%",
-                  paddingLeft: "3%",
-                  width: "100%",
-                  height: "auto",
-                }}
-                src={govtechLogo}
-                alt="Govtech Logo"
-              />
-            </div>
             <div className="col" />
             <div
               className="col text-center"

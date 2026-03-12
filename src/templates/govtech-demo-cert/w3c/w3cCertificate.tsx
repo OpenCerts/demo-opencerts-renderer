@@ -140,10 +140,6 @@ export const CertificateTemplate: FunctionComponent<TemplateProps<GovtechW3cVeri
           <i>has successfully completed the</i>
         </div>
         <div className="spacer text-lg">OpenCerts Demo</div>
-        <div className="spacer text-md">
-          <i>certification through training administered by</i>
-        </div>
-        <img className="img-fluid logo-gt" src={logo} alt="Govtech Logo" />
       </section>
       <section>
         <div className="row align-items-center">
