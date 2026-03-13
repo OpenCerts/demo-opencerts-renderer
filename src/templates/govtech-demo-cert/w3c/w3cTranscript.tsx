@@ -4,14 +4,13 @@ import { formatDate } from "../common/functions";
 import "bootstrap/dist/css/bootstrap.css";
 import "../common/demo-styles.css";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
-import { GovtechW3cVerifiableCredential } from "../../samples/govtech-w3c-teamplate-sample";
+import { GovtechW3cVerifiableCredential } from "../../samples/govtech-w3c-template-sample";
 import { PrintWatermark } from "../common/print-watermark";
 import govtechLogo from "../common/govtech-logo.png";
 import transcriptBg from "../common/transcript-background.png";
 
 export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechW3cVerifiableCredential>> = ({
   document,
-  handleObfuscation = () => undefined,
 }) => {
   // Support both:
   // - Full W3C VC envelope (with `credentialSubject`)

@@ -8,7 +8,6 @@ import { TemplateProps } from "@govtechsg/decentralized-renderer-react-component
 import { GovtechOpencertsTemplateCertificate } from "../../samples";
 import { PrintWatermark } from "../common/print-watermark";
 import mainLogo from "../common/opencerts-logo.svg";
-import logo from "../common/govtech-logo.png";
 import certificateBg from "../common/certificate-background.png";
 
 const Page = styled("div")<{ certificateBg: string }>`
@@ -135,10 +134,6 @@ export const OpenAttestationCertificate: FunctionComponent<TemplateProps<Govtech
         <i>has successfully completed the</i>
       </div>
       <div className="spacer text-lg">OpenCerts Demo</div>
-      {/* <div className="spacer text-md">
-        <i>certification through training administered by</i>
-      </div> */}
-      {/* <img className="img-fluid logo-gt" src={logo} alt="Govtech Logo" /> */}
     </section>
     <section>
       <div className="row align-items-center">

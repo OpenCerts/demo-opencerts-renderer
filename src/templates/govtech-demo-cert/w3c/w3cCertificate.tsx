@@ -8,7 +8,6 @@ import { TemplateProps } from "@govtechsg/decentralized-renderer-react-component
 import { GovtechW3cVerifiableCredential } from "../../samples";
 import { PrintWatermark } from "../common/print-watermark";
 import mainLogo from "../common/opencerts-logo.svg";
-import logo from "../common/govtech-logo.png";
 import certificateBg from "../common/certificate-background.png";
 
 const Page = styled("div")<{ certificateBg: string }>`

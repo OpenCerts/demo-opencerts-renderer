@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
 import { GovtechOpencertsTemplateCertificate } from "../samples";
 import { MediaTemplate as W3cMediaTemplate } from "./w3c/w3cMedia";
-import { GovtechW3cVerifiableCredential } from "../samples/govtech-w3c-teamplate-sample";
+import { GovtechW3cVerifiableCredential } from "../samples/govtech-w3c-template-sample";
 import { OpenAttestationMedia } from "./openattestation/OpenAttestationMedia";
 import { isW3CDocument } from "../../utils/w3c-utils";
 

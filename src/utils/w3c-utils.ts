@@ -20,5 +20,4 @@ export const isW3CDocument = (document: Record<string, unknown>): boolean => {
   }
 
   return true;
-}
-
+};

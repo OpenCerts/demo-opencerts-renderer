@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
 import "bootstrap/dist/css/bootstrap.css";
-import { GovtechW3cVerifiableCredential } from "../../samples/govtech-w3c-teamplate-sample";
+import { GovtechW3cVerifiableCredential } from "../../samples/govtech-w3c-template-sample";
 
 export const MediaTemplate: FunctionComponent<TemplateProps<GovtechW3cVerifiableCredential>> = () => {
   return (
