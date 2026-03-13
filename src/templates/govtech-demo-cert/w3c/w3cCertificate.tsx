@@ -119,9 +119,10 @@ const Page = styled("div")<{ certificateBg: string }>`
 
 export const CertificateTemplate: FunctionComponent<TemplateProps<GovtechW3cVerifiableCredential>> = ({ document }) => {
   const subject = document.credentialSubject;
-
+  const course = get(subject, "recipient.course");
   const issuedOn = get(subject, "issuedOn");
   const issuedOnDate = issuedOn ? new Date(issuedOn) : null;
+
 
   return (
     <Page certificateBg={`url('${certificateBg}')`} className="p-4">
@@ -139,7 +140,7 @@ export const CertificateTemplate: FunctionComponent<TemplateProps<GovtechW3cVeri
         <div className="spacer text-md">
           <i>has successfully completed the</i>
         </div>
-        <div className="spacer text-lg">OpenCerts Demo</div>
+        <div className="spacer text-lg">{course}</div>
       </section>
       <section>
         <div className="row align-items-center">

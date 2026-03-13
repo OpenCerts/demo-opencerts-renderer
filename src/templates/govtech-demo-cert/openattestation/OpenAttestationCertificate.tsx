@@ -134,7 +134,7 @@ export const OpenAttestationCertificate: FunctionComponent<TemplateProps<Govtech
       <div className="spacer text-md">
         <i>has successfully completed the</i>
       </div>
-      <div className="spacer text-lg">OpenCerts Demo</div>
+      <div className="spacer text-lg">{document.recipient.course}</div>
       {/* <div className="spacer text-md">
         <i>certification through training administered by</i>
       </div> */}
