@@ -6,7 +6,6 @@ import "../common/demo-styles.css";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
 import { GovtechW3cVerifiableCredential } from "../../samples/govtech-w3c-template-sample";
 import { PrintWatermark } from "../common/print-watermark";
-import govtechLogo from "../common/govtech-logo.png";
 import transcriptBg from "../common/transcript-background.png";
 
 export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechW3cVerifiableCredential>> = ({
