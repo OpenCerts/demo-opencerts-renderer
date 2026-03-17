@@ -8,6 +8,7 @@ import { isW3CDocument } from "../../utils/w3c-utils";
 
 export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechOpencertsTemplateCertificate>> = ({
   document,
+  handleObfuscation,
 }) => {
   if (isW3CDocument(document as unknown as Record<string, unknown>)) {
     return (
