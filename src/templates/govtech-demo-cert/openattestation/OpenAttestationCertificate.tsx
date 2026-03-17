@@ -11,7 +11,7 @@ import certificateBg from "../common/certificate-background.png";
 import { CertificatePage as Page } from "../common/certificate-styles";
 
 export const OpenAttestationCertificate: FunctionComponent<TemplateProps<GovtechOpencertsTemplateCertificate>> = ({
-  document,
+  document
 }) => (
   <Page certificateBg={`url('${certificateBg}')`} className="p-4">
     <PrintWatermark />
@@ -56,4 +56,3 @@ export const OpenAttestationCertificate: FunctionComponent<TemplateProps<Govtech
     </section>
   </Page>
 );
-

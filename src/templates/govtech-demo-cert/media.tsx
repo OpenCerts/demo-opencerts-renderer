@@ -7,8 +7,8 @@ import { OpenAttestationMedia } from "./openattestation/OpenAttestationMedia";
 import { isW3CDocument } from "../../utils/w3c-utils";
 
 export const MediaTemplate: FunctionComponent<TemplateProps<GovtechOpencertsTemplateCertificate>> = ({ document }) => {
-  if (isW3CDocument(document as unknown as Record<string, unknown>)) {
-    return <W3cMediaTemplate document={document as unknown as GovtechW3cVerifiableCredential} />;
+  if (isW3CDocument((document as unknown) as Record<string, unknown>)) {
+    return <W3cMediaTemplate document={(document as unknown) as GovtechW3cVerifiableCredential} />;
   }
 
   return <OpenAttestationMedia document={document} />;

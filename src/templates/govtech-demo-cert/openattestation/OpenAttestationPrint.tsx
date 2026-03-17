@@ -8,7 +8,7 @@ import { OpenAttestationTranscript } from "./OpenAttestationTranscript";
 
 export const OpenAttestationPrint: FunctionComponent<TemplateProps<GovtechOpencertsTemplateCertificate>> = ({
   document,
-  handleObfuscation,
+  handleObfuscation
 }) => (
   <>
     <OpenAttestationCertificate document={document} handleObfuscation={handleObfuscation} />
@@ -18,4 +18,3 @@ export const OpenAttestationPrint: FunctionComponent<TemplateProps<GovtechOpence
     <img src="/static/images/yt.png" className="w-100" />
   </>
 );
-

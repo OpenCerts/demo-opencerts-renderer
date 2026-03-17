@@ -15,4 +15,3 @@ export const MediaTemplate: FunctionComponent<TemplateProps<GovtechW3cVerifiable
     </div>
   );
 };
-

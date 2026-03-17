@@ -8,14 +8,10 @@ import { OpenAttestationCertificate } from "./openattestation/OpenAttestationCer
 
 export const CertificateTemplate: FunctionComponent<TemplateProps<GovtechOpencertsTemplateCertificate>> = ({
   document,
-  handleObfuscation,
+  handleObfuscation
 }) => {
-  if (isW3CDocument(document as unknown as Record<string, unknown>)) {
-    return (
-      <W3cCertificateTemplate
-        document={document as unknown as GovtechW3cVerifiableCredential}
-      />
-    );
+  if (isW3CDocument((document as unknown) as Record<string, unknown>)) {
+    return <W3cCertificateTemplate document={(document as unknown) as GovtechW3cVerifiableCredential} />;
   }
 
   return <OpenAttestationCertificate document={document} handleObfuscation={handleObfuscation} />;

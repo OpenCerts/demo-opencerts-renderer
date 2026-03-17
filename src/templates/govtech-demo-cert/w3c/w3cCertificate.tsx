@@ -10,12 +10,10 @@ import mainLogo from "../common/opencerts-logo.svg";
 import certificateBg from "../common/certificate-background.png";
 import { CertificatePage as Page } from "../common/certificate-styles";
 
-
 export const CertificateTemplate: FunctionComponent<TemplateProps<GovtechW3cVerifiableCredential>> = ({ document }) => {
   const subject = document.credentialSubject;
   const issuedOn = get(subject, "issuedOn");
   const issuedOnDate = issuedOn ? new Date(issuedOn) : null;
-
 
   return (
     <Page certificateBg={`url('${certificateBg}')`} className="p-4">
@@ -64,4 +62,3 @@ export const CertificateTemplate: FunctionComponent<TemplateProps<GovtechW3cVeri
     </Page>
   );
 };
-

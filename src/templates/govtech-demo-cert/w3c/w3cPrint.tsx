@@ -17,4 +17,3 @@ export const PrintTemplate: FunctionComponent<TemplateProps<GovtechW3cVerifiable
     </>
   );
 };
-

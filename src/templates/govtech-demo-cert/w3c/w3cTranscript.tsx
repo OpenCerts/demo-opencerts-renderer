@@ -8,9 +8,7 @@ import { GovtechW3cVerifiableCredential } from "../../samples/govtech-w3c-templa
 import { PrintWatermark } from "../common/print-watermark";
 import transcriptBg from "../common/transcript-background.png";
 
-export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechW3cVerifiableCredential>> = ({
-  document,
-}) => {
+export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechW3cVerifiableCredential>> = ({ document }) => {
   // Support both:
   // - Full W3C VC envelope (with `credentialSubject`)
   // - Plain OpenCerts-style payload (subject at top level)
@@ -47,7 +45,7 @@ export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechW3cVerif
           className="p-2 container"
           style={{
             backgroundImage: `url('${transcriptBg}')`,
-            backgroundRepeat: "repeat",
+            backgroundRepeat: "repeat"
           }}
         >
           <div className="row root cert-title" style={{ paddingLeft: "3%" }}>
@@ -58,7 +56,7 @@ export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechW3cVerif
             className="row transcript"
             style={{
               paddingTop: "3%",
-              paddingLeft: "2%",
+              paddingLeft: "2%"
             }}
           >
             <div className="col">
@@ -151,7 +149,7 @@ export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechW3cVerif
                 paddingTop: "5%",
                 paddingRight: "5%",
                 width: "100%",
-                height: "auto",
+                height: "auto"
               }}
             >
               <img className="w-100" src={get(subject, "additionalData.certSignatories[0].signature")} />
@@ -169,4 +167,3 @@ export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechW3cVerif
     </>
   );
 };
-

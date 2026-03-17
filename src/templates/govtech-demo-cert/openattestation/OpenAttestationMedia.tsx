@@ -13,4 +13,3 @@ export const OpenAttestationMedia: FunctionComponent<TemplateProps<GovtechOpence
     />
   </div>
 );
-
