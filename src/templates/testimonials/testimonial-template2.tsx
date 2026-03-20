@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
+import { TemplateProps } from "@trustvc/decentralized-renderer-react-components";
 import { TestimonialCertificate } from "../samples";
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 import { Page, PageContainer, pageHeight, pageWidth } from "../../components/page";
 import banner from "./testimonial-2-banner.jpg";
 

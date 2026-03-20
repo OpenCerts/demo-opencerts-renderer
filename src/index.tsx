@@ -1,7 +1,10 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { FramedDocumentRenderer } from "@govtechsg/decentralized-renderer-react-components";
+import ReactDOM from "react-dom/client";
+import { FramedDocumentRenderer } from "@trustvc/decentralized-renderer-react-components";
 import { registry } from "./templates";
 import "./index.css";
 
-ReactDOM.render(<FramedDocumentRenderer templateRegistry={registry} />, document.getElementById("root"));
+const container = document.getElementById("root");
+if (!container) throw new Error("Root container #root not found");
+
+ReactDOM.createRoot(container).render(<FramedDocumentRenderer templateRegistry={registry} />);

@@ -2,7 +2,7 @@ import { templates as govtechDemoTemplates } from "./govtech-demo-cert";
 import { templates as imdaDemoTemplates } from "./imda-demo-cert";
 import { templates as testimonialsTemplates, templates2 as testimonialsTemplates2 } from "./testimonials";
 import { templates as certificateOfAwardTemplates } from "./certificate-of-award";
-import { TemplateRegistry } from "@govtechsg/decentralized-renderer-react-components";
+import { TemplateRegistry } from "@trustvc/decentralized-renderer-react-components";
 
 export const registry: TemplateRegistry<any> = {
   default: govtechDemoTemplates,

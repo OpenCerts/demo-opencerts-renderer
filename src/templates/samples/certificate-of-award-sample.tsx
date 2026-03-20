@@ -1,6 +1,10 @@
-import { Document } from "@govtechsg/decentralized-renderer-react-components";
-
-export interface CertificateOfAward extends Document {
+export type CertificateOfAward = {
+  id: string;
+  $template: {
+    name: string;
+    type: string;
+    url: string;
+  };
   description?: string;
   issuedOn: string;
   name: string;
@@ -33,7 +37,7 @@ export interface CertificateOfAward extends Document {
     signature?: string;
     seal?: string;
   };
-}
+};
 
 export const customCertificateOfAward: CertificateOfAward = {
   id: "EAG171622",

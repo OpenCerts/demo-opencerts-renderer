@@ -3,16 +3,19 @@ import { get } from "lodash";
 import { formatDate } from "./common/functions";
 import "bootstrap/dist/css/bootstrap.css";
 import "./common/demo-styles.css";
-import { ObfuscatableValue, TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
+import { ObfuscatableValue, TemplateProps } from "@trustvc/decentralized-renderer-react-components";
 import { GovtechOpencertsTemplateCertificate } from "../samples";
 import { PrintWatermark } from "./common/print-watermark";
 import transcriptBg from "./common/transcript-background.png";
 import { SimplePrivacyFilterBanner } from "./common/simple-privacy-filter-banner";
+import { isW3CDocument } from "../../utils/w3c-utils";
 
-export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechOpencertsTemplateCertificate>> = ({
-  document,
-  handleObfuscation
+export const TranscriptTemplate: FunctionComponent<TemplateProps<any>> = ({
+  document: rawDocument,
+  handleObfuscation = () => undefined
 }) => {
+  const document = ((rawDocument as { credentialSubject?: unknown })?.credentialSubject || rawDocument) as GovtechOpencertsTemplateCertificate;
+  const showPrivacyBanner = !isW3CDocument(rawDocument);
   const [editable, setEditable] = useState(false);
   const documentName = get(document, "name");
   const documentId = get(document, "id");
@@ -71,7 +74,9 @@ export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechOpencert
     <>
       <PrintWatermark />
       <div className="container">
-        <SimplePrivacyFilterBanner onToggleEditable={() => setEditable(!editable)} className="privacy-banner" />
+        {showPrivacyBanner && (
+          <SimplePrivacyFilterBanner onToggleEditable={() => setEditable(!editable)} className="privacy-banner" />
+        )}
         <div
           className="p-2 container"
           style={{
@@ -152,7 +157,7 @@ export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechOpencert
             </div>
           </div>
 
-          {transcriptData !== [] && (
+          {transcriptData.length > 0 && (
             <div className="row mb-4" style={{ paddingLeft: "3%", paddingTop: "5%" }}>
               <div className="root cert-title">
                 <b>Transcript</b>

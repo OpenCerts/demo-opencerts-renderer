@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
+import { TemplateProps } from "@trustvc/decentralized-renderer-react-components";
 import { TestimonialCertificate } from "../samples";
 import styled from "@emotion/styled";
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 import moeLogo from "./moe-ministry-of-education-singapore.png";
 import { Page, PageContainer, pageHeight } from "../../components/page";
 
@@ -38,7 +38,7 @@ const CustomPage = styled(Page)`
   background: linear-gradient(176deg, rgba(255, 255, 255, 1) 0%, rgba(240, 252, 255, 1) 100%);
 `;
 
-export const TestimonialTemplate: FunctionComponent<TemplateProps<TestimonialCertificate>> = ({ document }) => (
+export const TestimonialTemplate: FunctionComponent<TemplateProps<any>> = ({ document }) => (
   <PageContainer>
     <CustomPage>
       <div

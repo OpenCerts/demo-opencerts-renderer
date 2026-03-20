@@ -1,10 +1,16 @@
-import { Document } from "@govtechsg/decentralized-renderer-react-components";
 
-export interface TestimonialCertificate extends Document {
+
+export interface TestimonialCertificate {
+  id: string;
   description: string;
   issuedOn: string;
   name: string;
   content: string;
+  $template: {
+    name: string;
+    type: string;
+    url: string;
+  };
   issuers: {
     name: string;
     did: string;

@@ -1,4 +1,4 @@
-import { Document } from "@govtechsg/decentralized-renderer-react-components";
+import { Document } from "@trustvc/decentralized-renderer-react-components";
 
 /**
  * W3C VC shape for the GovTech demo OpenCerts certificate.
