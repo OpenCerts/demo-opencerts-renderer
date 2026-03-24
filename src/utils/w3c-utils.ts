@@ -1,6 +1,4 @@
 export const isW3CDocument = (document: Record<string, unknown>): boolean => {
-  console.log(document);
-  debugger;
   if (!document || !document["@context"]) return false;
 
   const type = document.type;

@@ -38,7 +38,7 @@ const CustomPage = styled(Page)`
   background: linear-gradient(176deg, rgba(255, 255, 255, 1) 0%, rgba(240, 252, 255, 1) 100%);
 `;
 
-export const TestimonialTemplate: FunctionComponent<TemplateProps<any>> = ({ document }) => (
+export const TestimonialTemplate: FunctionComponent<TemplateProps<TestimonialCertificate>> = ({ document }) => (
   <PageContainer>
     <CustomPage>
       <div

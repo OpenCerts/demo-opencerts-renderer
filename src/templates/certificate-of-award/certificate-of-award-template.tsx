@@ -11,8 +11,28 @@ const header1Height = "3.5cm";
 const footer1Height = "2cm";
 const content1Height = `calc(${pageHeight} - ${header1Height} - ${footer1Height})`;
 
+const isCertificateOfAward = (document: unknown): document is CertificateOfAward => {
+  if (!document || typeof document !== "object") return false;
+  const doc = document as {
+    name?: unknown;
+    recipient?: { name?: unknown };
+    award?: { achievementArea?: unknown; instituteName?: unknown };
+    signature?: { signature?: unknown; name?: unknown; designation?: unknown };
+  };
+  return (
+    typeof doc.name === "string" &&
+    typeof doc.recipient?.name === "string" &&
+    typeof doc.award?.achievementArea === "string" &&
+    typeof doc.award?.instituteName === "string" &&
+    typeof doc.signature?.signature === "string" &&
+    typeof doc.signature?.name === "string" &&
+    typeof doc.signature?.designation === "string"
+  );
+};
+
 export const CertificateOfAwardTemplate: FunctionComponent<TemplateProps<any>> = ({ document }) => {
-  const doc = document as CertificateOfAward;
+  if (!isCertificateOfAward(document)) return null;
+  const doc = document;
   return (
     <PageContainer>
       <Page>
@@ -30,8 +50,8 @@ export const CertificateOfAwardTemplate: FunctionComponent<TemplateProps<any>> =
           }
         `}
         >
-          <img src={moeLogo} />
-          <img src={cccLogo} />
+          <img src={moeLogo} alt="Ministry of Education Singapore" />
+          <img src={cccLogo} alt="Citizens' Consultative Committees" />
         </div>
         <div
           className="text-center"
@@ -88,7 +108,7 @@ export const CertificateOfAwardTemplate: FunctionComponent<TemplateProps<any>> =
             good conduct
           </div>
           <div className="signature">
-            <img src={doc.signature.signature} />
+            <img src={doc.signature.signature} alt={doc.signature.name || "signature"} />
             <div className="text-uppercase">
               {doc.signature.name}
               <br />

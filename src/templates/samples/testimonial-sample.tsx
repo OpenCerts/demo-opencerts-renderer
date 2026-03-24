@@ -1,6 +1,6 @@
 
 
-export interface TestimonialCertificate {
+type TestimonialCertificate = {
   id: string;
   description: string;
   issuedOn: string;
