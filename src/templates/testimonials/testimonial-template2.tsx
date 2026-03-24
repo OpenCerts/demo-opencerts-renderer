@@ -36,7 +36,7 @@ export const TestimonialTemplate2: FunctionComponent<TemplateProps<TestimonialCe
           {new Date(document.issuedOn).toLocaleDateString(undefined, {
             year: "numeric",
             month: "long",
-            day: "numeric"
+            day: "numeric",
           })}
         </p>
         <div className="text-justify" dangerouslySetInnerHTML={{ __html: document.content }} />

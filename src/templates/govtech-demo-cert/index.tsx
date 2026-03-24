@@ -7,21 +7,21 @@ export const templates = [
   {
     id: "certificate",
     label: "Certificate",
-    template: CertificateTemplate
+    template: CertificateTemplate,
   },
   {
     id: "transcript",
     label: "Transcript",
-    template: TranscriptTemplate
+    template: TranscriptTemplate,
   },
   {
     id: "media",
     label: "Media",
-    template: MediaTemplate
+    template: MediaTemplate,
   },
   {
     id: "print",
     label: "Print",
-    template: PrintTemplate
-  }
+    template: PrintTemplate,
+  },
 ];

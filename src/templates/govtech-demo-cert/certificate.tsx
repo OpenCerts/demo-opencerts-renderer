@@ -11,12 +11,12 @@ import mainLogo from "./common/opencerts-logo.svg";
 import logo from "./common/govtech-logo.png";
 import certificateBg from "./common/certificate-background.png";
 
-const Page = styled("div") <{ certificateBg: string }>`
+const Page = styled("div")<{ certificateBg: string }>`
   max-width: 297mm;
   margin: 0 auto;
 
   position: relative;
-  background-image: ${props => props.certificateBg};
+  background-image: ${(props) => props.certificateBg};
   background-position: center;
   background-size: cover;
   border: 10px solid #324353;
@@ -120,7 +120,9 @@ const Page = styled("div") <{ certificateBg: string }>`
   }
 `;
 
-export const CertificateTemplate: FunctionComponent<TemplateProps<GovtechOpencertsTemplateCertificate>> = ({ document }) => (
+export const CertificateTemplate: FunctionComponent<TemplateProps<GovtechOpencertsTemplateCertificate>> = ({
+  document,
+}) => (
   <Page certificateBg={`url('${certificateBg}')`} className="p-4">
     <PrintWatermark />
     <section className="text-center">

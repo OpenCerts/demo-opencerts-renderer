@@ -28,7 +28,7 @@ const style = css`
  */
 export const SimplePrivacyFilterBanner: FunctionComponent<SimplePrivacyFilterBannerProps> = ({
   onToggleEditable,
-  className = ""
+  className = "",
 }) => (
   <div css={style} className={className}>
     <div className="text-container">

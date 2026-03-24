@@ -8,7 +8,7 @@ import { TranscriptTemplate } from "./transcript";
 
 export const PrintTemplate: FunctionComponent<TemplateProps<GovtechOpencertsTemplateCertificate>> = ({
   document,
-  handleObfuscation
+  handleObfuscation,
 }) => (
   <>
     <CertificateTemplate document={document} handleObfuscation={handleObfuscation} />

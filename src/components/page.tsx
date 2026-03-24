@@ -24,7 +24,7 @@ export const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
 `;
-export const PageContainer: React.FunctionComponent<React.PropsWithChildren<{}>> = ({ children }) => {
+export const PageContainer: React.FunctionComponent<React.PropsWithChildren> = ({ children }) => {
   return (
     <Container>
       <PrintWatermark />

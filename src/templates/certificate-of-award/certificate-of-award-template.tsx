@@ -38,17 +38,17 @@ export const CertificateOfAwardTemplate: FunctionComponent<TemplateProps<any>> =
       <Page>
         <div
           css={css`
-          background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(180, 191, 245, 1) 100%);
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 0 2cm;
-          height: ${header1Height};
-          border-bottom: 1px solid #999c97;
-          img {
-            height: 2.5cm;
-          }
-        `}
+            background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(180, 191, 245, 1) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2cm;
+            height: ${header1Height};
+            border-bottom: 1px solid #999c97;
+            img {
+              height: 2.5cm;
+            }
+          `}
         >
           <img src={moeLogo} alt="Ministry of Education Singapore" />
           <img src={cccLogo} alt="Citizens' Consultative Committees" />
@@ -56,38 +56,38 @@ export const CertificateOfAwardTemplate: FunctionComponent<TemplateProps<any>> =
         <div
           className="text-center"
           css={css`
-          height: ${content1Height};
-          padding: 0 2cm;
-          .certificate {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #000000;
-            margin: 1.5cm 0;
-          }
-          .recipient {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #000000;
-            margin: 0.5cm 0;
-          }
-          .achievement-area {
-            margin-top: 0.5cm;
-          }
-          .institute {
-            margin-bottom: 1.5cm;
-          }
-          .information {
-            margin: 1.5cm 0;
-          }
-          .signature {
-            line-height: 2rem;
-          }
-          .signature img {
-            width: 6cm;
-            border-bottom: 2px solid #b6b7b2;
-            margin-bottom: 0.5cm;
-          }
-        `}
+            height: ${content1Height};
+            padding: 0 2cm;
+            .certificate {
+              font-size: 2rem;
+              font-weight: bold;
+              color: #000000;
+              margin: 1.5cm 0;
+            }
+            .recipient {
+              font-size: 1.5rem;
+              font-weight: bold;
+              color: #000000;
+              margin: 0.5cm 0;
+            }
+            .achievement-area {
+              margin-top: 0.5cm;
+            }
+            .institute {
+              margin-bottom: 1.5cm;
+            }
+            .information {
+              margin: 1.5cm 0;
+            }
+            .signature {
+              line-height: 2rem;
+            }
+            .signature img {
+              width: 6cm;
+              border-bottom: 2px solid #b6b7b2;
+              margin-bottom: 0.5cm;
+            }
+          `}
         >
           <div className="certificate text-uppercase">{doc.name}</div>
           <div>is presented to</div>
@@ -119,9 +119,9 @@ export const CertificateOfAwardTemplate: FunctionComponent<TemplateProps<any>> =
         <div
           className="footer"
           css={css`
-          height: ${footer1Height};
-          padding: 0 2cm;
-        `}
+            height: ${footer1Height};
+            padding: 0 2cm;
+          `}
         >
           ABC123456
         </div>

@@ -10,12 +10,12 @@ import mainLogo from "./common/opencerts-logo.svg";
 import certificateBg from "./common/certificate-background.png";
 import { getCertificatePayload, SupportedDocument } from "./types";
 
-const Page = styled("div") <{ certificateBg: string }>`
+const Page = styled("div")<{ certificateBg: string }>`
   max-width: 297mm;
   margin: 0 auto;
 
   position: relative;
-  background-image: ${props => props.certificateBg};
+  background-image: ${(props) => props.certificateBg};
   background-position: center;
   background-size: cover;
   border: 10px solid #324353;

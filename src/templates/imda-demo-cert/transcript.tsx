@@ -12,7 +12,7 @@ import { isW3CDocument } from "../../utils/w3c-utils";
 
 export const TranscriptTemplate: FunctionComponent<TemplateProps<SupportedDocument>> = ({
   document: rawDocument,
-  handleObfuscation = () => undefined
+  handleObfuscation = () => undefined,
 }) => {
   const document = getCertificatePayload(rawDocument);
   const showPrivacyBanner = !isW3CDocument(rawDocument as Record<string, unknown>);
@@ -81,7 +81,7 @@ export const TranscriptTemplate: FunctionComponent<TemplateProps<SupportedDocume
           className="p-2 container"
           style={{
             backgroundImage: `url('${transcriptBg}')`,
-            backgroundRepeat: "repeat"
+            backgroundRepeat: "repeat",
           }}
         >
           <div className="row root cert-title" style={{ paddingLeft: "3%" }}>
@@ -92,7 +92,7 @@ export const TranscriptTemplate: FunctionComponent<TemplateProps<SupportedDocume
             className="row transcript"
             style={{
               paddingTop: "3%",
-              paddingLeft: "2%"
+              paddingLeft: "2%",
             }}
           >
             <div className="col">
@@ -198,7 +198,7 @@ export const TranscriptTemplate: FunctionComponent<TemplateProps<SupportedDocume
                 paddingTop: "5%",
                 paddingRight: "5%",
                 width: "100%",
-                height: "auto"
+                height: "auto",
               }}
             >
               <img className="w-100" src={get(document, "additionalData.certSignatories[0].signature")} />

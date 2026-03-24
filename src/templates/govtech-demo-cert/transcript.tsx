@@ -12,7 +12,7 @@ import { SimplePrivacyFilterBanner } from "./common/simple-privacy-filter-banner
 
 export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechOpencertsTemplateCertificate>> = ({
   document,
-  handleObfuscation = () => undefined
+  handleObfuscation = () => undefined,
 }) => {
   const [editable, setEditable] = useState(false);
   const documentName = get(document, "name");
@@ -77,7 +77,7 @@ export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechOpencert
           className="p-2 container"
           style={{
             backgroundImage: `url('${transcriptBg}')`,
-            backgroundRepeat: "repeat"
+            backgroundRepeat: "repeat",
           }}
         >
           <div className="row root cert-title" style={{ paddingLeft: "3%" }}>
@@ -88,7 +88,7 @@ export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechOpencert
             className="row transcript"
             style={{
               paddingTop: "3%",
-              paddingLeft: "2%"
+              paddingLeft: "2%",
             }}
           >
             <div className="col">
@@ -181,7 +181,7 @@ export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechOpencert
                   paddingTop: "40%",
                   paddingLeft: "3%",
                   width: "100%",
-                  height: "auto"
+                  height: "auto",
                 }}
                 src={govtechLogo}
                 alt="Govtech Logo"
@@ -194,7 +194,7 @@ export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechOpencert
                 paddingTop: "5%",
                 paddingRight: "5%",
                 width: "100%",
-                height: "auto"
+                height: "auto",
               }}
             >
               <img className="w-100" src={get(document, "additionalData.certSignatories[0].signature")} />
