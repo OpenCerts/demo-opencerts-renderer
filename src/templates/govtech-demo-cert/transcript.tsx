@@ -35,35 +35,35 @@ export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechOpencert
           <ObfuscatableValue
             editable={editable}
             value={t.courseCode}
-            onObfuscationRequested={() => handleObfuscation(`transcript[${i}].courseCode`)}
+            onObfuscationRequested={() => handleObfuscation?.(`transcript[${i}].courseCode`)}
           />
         </td>
         <td>
           <ObfuscatableValue
             editable={editable}
             value={t.name}
-            onObfuscationRequested={() => handleObfuscation(`transcript[${i}].name`)}
+            onObfuscationRequested={() => handleObfuscation?.(`transcript[${i}].name`)}
           />
         </td>
         <td>
           <ObfuscatableValue
             editable={editable}
             value={t.grade}
-            onObfuscationRequested={() => handleObfuscation(`transcript[${i}].grade`)}
+            onObfuscationRequested={() => handleObfuscation?.(`transcript[${i}].grade`)}
           />
         </td>
         <td>
           <ObfuscatableValue
             editable={editable}
             value={t.courseCredit}
-            onObfuscationRequested={() => handleObfuscation(`transcript[${i}].courseCredit`)}
+            onObfuscationRequested={() => handleObfuscation?.(`transcript[${i}].courseCredit`)}
           />
         </td>
         <td>
           <ObfuscatableValue
             editable={editable}
             value={t.semester}
-            onObfuscationRequested={() => handleObfuscation(`transcript[${i}].semester`)}
+            onObfuscationRequested={() => handleObfuscation?.(`transcript[${i}].semester`)}
           />
         </td>
       </tr>
