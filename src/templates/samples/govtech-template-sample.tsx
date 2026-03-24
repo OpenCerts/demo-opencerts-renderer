@@ -1,4 +1,4 @@
-import { OpenAttestationDocument } from "@trustvc/decentralized-renderer-react-components";
+import { OpenAttestationDocument } from "@trustvc/trustvc";
 
 type GovtechCertificatePayload = {
   id: string;
@@ -35,7 +35,7 @@ type GovtechCertificatePayload = {
 
 export type GovtechOpencertsTemplateCertificate = OpenAttestationDocument & GovtechCertificatePayload;
 
-export const customTemplateCertificate: GovtechCertificatePayload = {
+export const customTemplateCertificate = {
   id: "53b75bbe",
   name: "Govtech Demo Certificate",
   description: "Govtech Demo Certificate",
@@ -103,4 +103,4 @@ export const customTemplateCertificate: GovtechCertificatePayload = {
       },
     ],
   },
-};
+} as GovtechOpencertsTemplateCertificate;

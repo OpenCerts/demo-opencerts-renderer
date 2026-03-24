@@ -1,4 +1,4 @@
-type TestimonialCertificate = {
+export type TestimonialCertificate = {
   id: string;
   description: string;
   issuedOn: string;

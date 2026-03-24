@@ -26,47 +26,49 @@ export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechOpencert
   const recipientCourse = get(document, "recipient.course");
   const studentId = get(document, "additionalData.studentId");
 
-  const transcriptData = document.transcript || [];
+  const transcriptData: GovtechOpencertsTemplateCertificate["transcript"] = document.transcript || [];
 
-  const transcriptSection = transcriptData.map((t, i) => (
-    <tr key={i}>
-      <td>
-        <ObfuscatableValue
-          editable={editable}
-          value={t.courseCode}
-          onObfuscationRequested={() => handleObfuscation(`transcript[${i}].courseCode`)}
-        />
-      </td>
-      <td>
-        <ObfuscatableValue
-          editable={editable}
-          value={t.name}
-          onObfuscationRequested={() => handleObfuscation(`transcript[${i}].name`)}
-        />
-      </td>
-      <td>
-        <ObfuscatableValue
-          editable={editable}
-          value={t.grade}
-          onObfuscationRequested={() => handleObfuscation(`transcript[${i}].grade`)}
-        />
-      </td>
-      <td>
-        <ObfuscatableValue
-          editable={editable}
-          value={t.courseCredit}
-          onObfuscationRequested={() => handleObfuscation(`transcript[${i}].courseCredit`)}
-        />
-      </td>
-      <td>
-        <ObfuscatableValue
-          editable={editable}
-          value={t.semester}
-          onObfuscationRequested={() => handleObfuscation(`transcript[${i}].semester`)}
-        />
-      </td>
-    </tr>
-  ));
+  const transcriptSection = transcriptData.map(
+    (t: GovtechOpencertsTemplateCertificate["transcript"][number], i: number) => (
+      <tr key={i}>
+        <td>
+          <ObfuscatableValue
+            editable={editable}
+            value={t.courseCode}
+            onObfuscationRequested={() => handleObfuscation(`transcript[${i}].courseCode`)}
+          />
+        </td>
+        <td>
+          <ObfuscatableValue
+            editable={editable}
+            value={t.name}
+            onObfuscationRequested={() => handleObfuscation(`transcript[${i}].name`)}
+          />
+        </td>
+        <td>
+          <ObfuscatableValue
+            editable={editable}
+            value={t.grade}
+            onObfuscationRequested={() => handleObfuscation(`transcript[${i}].grade`)}
+          />
+        </td>
+        <td>
+          <ObfuscatableValue
+            editable={editable}
+            value={t.courseCredit}
+            onObfuscationRequested={() => handleObfuscation(`transcript[${i}].courseCredit`)}
+          />
+        </td>
+        <td>
+          <ObfuscatableValue
+            editable={editable}
+            value={t.semester}
+            onObfuscationRequested={() => handleObfuscation(`transcript[${i}].semester`)}
+          />
+        </td>
+      </tr>
+    ),
+  );
 
   return (
     <>

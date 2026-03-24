@@ -1,4 +1,4 @@
-import { OpenAttestationDocument, SignedVerifiableCredential } from "@trustvc/decentralized-renderer-react-components";
+import { OpenAttestationDocument, SignedVerifiableCredential } from "@trustvc/trustvc";
 
 export type SupportedDocument = OpenAttestationDocument | SignedVerifiableCredential;
 

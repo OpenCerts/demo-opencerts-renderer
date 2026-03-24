@@ -1,4 +1,4 @@
-import { Document } from "@trustvc/decentralized-renderer-react-components";
+import { SignedVerifiableCredential } from "@trustvc/trustvc";
 
 /**
  * W3C VC shape for the GovTech demo OpenCerts certificate.
@@ -41,8 +41,8 @@ export interface GovtechW3cCredentialSubject {
   };
 }
 
-export interface GovtechW3cVerifiableCredential extends Document {
-  "@context": unknown[];
+export interface GovtechW3cVerifiableCredential extends SignedVerifiableCredential {
+  "@context": string[];
   type: ["VerifiableCredential"];
   issuer: string;
   validFrom: string;
@@ -52,7 +52,7 @@ export interface GovtechW3cVerifiableCredential extends Document {
     templateName: string;
   }[];
   credentialSubject: GovtechW3cCredentialSubject;
-  id?: string;
+  id: string;
   proof?: {
     type: string;
     verificationMethod: string;
