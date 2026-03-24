@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useState } from "react";
 import { get } from "lodash";
+import { vc } from "@trustvc/trustvc";
 import { formatDate } from "./common/functions";
 import "bootstrap/dist/css/bootstrap.css";
 import "./common/demo-styles.css";
@@ -8,14 +9,14 @@ import { PrintWatermark } from "./common/print-watermark";
 import transcriptBg from "./common/transcript-background.png";
 import { SimplePrivacyFilterBanner } from "./common/simple-privacy-filter-banner";
 import { getCertificatePayload, SupportedDocument } from "./types";
-import { isW3CDocument } from "../../utils/w3c-utils";
 
 export const TranscriptTemplate: FunctionComponent<TemplateProps<SupportedDocument>> = ({
   document: rawDocument,
   handleObfuscation = () => undefined,
 }) => {
   const document = getCertificatePayload(rawDocument);
-  const showPrivacyBanner = !isW3CDocument(rawDocument as Record<string, unknown>);
+  const isW3CVC = vc.isSignedDocument(rawDocument as object);
+  const showPrivacyBanner = !isW3CVC;
   const [editable, setEditable] = useState(false);
   const documentName = get(document, "name");
   const documentId = get(document, "id");
