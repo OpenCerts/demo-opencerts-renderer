@@ -6,7 +6,7 @@ import { GovtechOpencertsTemplateCertificate } from "../samples";
 import { CertificateTemplate } from "./certificate";
 import { TranscriptTemplate } from "./transcript";
 
-export const PrintTemplate: FunctionComponent<TemplateProps<any>> = ({
+export const PrintTemplate: FunctionComponent<TemplateProps<GovtechOpencertsTemplateCertificate>> = ({
   document,
   handleObfuscation
 }) => (

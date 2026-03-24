@@ -10,7 +10,7 @@ import govtechLogo from "./common/govtech-logo.png";
 import transcriptBg from "./common/transcript-background.png";
 import { SimplePrivacyFilterBanner } from "./common/simple-privacy-filter-banner";
 
-export const TranscriptTemplate: FunctionComponent<TemplateProps<any>> = ({
+export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechOpencertsTemplateCertificate>> = ({
   document,
   handleObfuscation = () => undefined
 }) => {
@@ -26,7 +26,7 @@ export const TranscriptTemplate: FunctionComponent<TemplateProps<any>> = ({
   const recipientCourse = get(document, "recipient.course");
   const studentId = get(document, "additionalData.studentId");
 
-  const transcriptData = (document as GovtechOpencertsTemplateCertificate).transcript || [];
+  const transcriptData = document.transcript || [];
 
   const transcriptSection = transcriptData.map((t, i) => (
     <tr key={i}>

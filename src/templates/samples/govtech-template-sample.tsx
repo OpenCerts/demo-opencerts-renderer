@@ -1,6 +1,7 @@
-import { Document } from "@trustvc/decentralized-renderer-react-components";
+import { OpenAttestationDocument } from "@trustvc/decentralized-renderer-react-components";
 
-export interface GovtechOpencertsTemplateCertificate extends Document {
+type GovtechCertificatePayload = {
+  id: string;
   name: string;
   description: string;
   issuedOn: string;
@@ -30,9 +31,11 @@ export interface GovtechOpencertsTemplateCertificate extends Document {
       organisation: string;
     }[];
   };
-}
+};
 
-export const customTemplateCertificate: GovtechOpencertsTemplateCertificate = {
+export type GovtechOpencertsTemplateCertificate = OpenAttestationDocument & GovtechCertificatePayload;
+
+export const customTemplateCertificate: GovtechCertificatePayload = {
   id: "53b75bbe",
   name: "Govtech Demo Certificate",
   description: "Govtech Demo Certificate",

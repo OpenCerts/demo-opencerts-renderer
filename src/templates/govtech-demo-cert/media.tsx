@@ -3,7 +3,7 @@ import { TemplateProps } from "@trustvc/decentralized-renderer-react-components"
 import "bootstrap/dist/css/bootstrap.css";
 import { GovtechOpencertsTemplateCertificate } from "../samples";
 
-export const MediaTemplate: FunctionComponent<TemplateProps<any>> = () => (
+export const MediaTemplate: FunctionComponent<TemplateProps<GovtechOpencertsTemplateCertificate>> = () => (
   <div className="embed-responsive embed-responsive-16by9">
     <iframe
       id="youtube-vid"

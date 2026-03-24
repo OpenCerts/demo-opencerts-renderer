@@ -2,22 +2,22 @@ import React, { FunctionComponent } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./common/demo-styles.css";
 import { TemplateProps } from "@trustvc/decentralized-renderer-react-components";
-import { GovtechOpencertsTemplateCertificate } from "../samples";
 import { CertificateTemplate } from "./certificate";
 import { TranscriptTemplate } from "./transcript";
+import { SupportedDocument } from "./types";
 
-export const PrintTemplate: FunctionComponent<TemplateProps<any>> = ({
+export const PrintTemplate: FunctionComponent<TemplateProps<SupportedDocument>> = ({
   document,
   handleObfuscation
 }) => (
   <>
     <CertificateTemplate
-      document={(document as { credentialSubject?: unknown })?.credentialSubject || document}
+      document={document}
       handleObfuscation={handleObfuscation}
     />
     <div style={{ pageBreakAfter: "always" }} />
     <TranscriptTemplate
-      document={(document as { credentialSubject?: unknown })?.credentialSubject || document}
+      document={document}
       handleObfuscation={handleObfuscation}
     />
     <div style={{ pageBreakAfter: "always" }} />

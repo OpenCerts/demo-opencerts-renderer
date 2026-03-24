@@ -5,10 +5,10 @@ import React, { FunctionComponent } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./common/demo-styles.css";
 import { TemplateProps } from "@trustvc/decentralized-renderer-react-components";
-import { GovtechOpencertsTemplateCertificate } from "../samples";
 import { PrintWatermark } from "./common/print-watermark";
 import mainLogo from "./common/opencerts-logo.svg";
 import certificateBg from "./common/certificate-background.png";
+import { getCertificatePayload, SupportedDocument } from "./types";
 
 const Page = styled("div") <{ certificateBg: string }>`
   max-width: 297mm;
@@ -119,8 +119,8 @@ const Page = styled("div") <{ certificateBg: string }>`
   }
 `;
 
-export const CertificateTemplate: FunctionComponent<TemplateProps<any>> = ({ document }) => {
-  const subject = (document as { credentialSubject?: unknown })?.credentialSubject || document;
+export const CertificateTemplate: FunctionComponent<TemplateProps<SupportedDocument>> = ({ document }) => {
+  const subject = getCertificatePayload(document);
   const issuedOn = get(subject, "issuedOn");
   const issuedOnDate = issuedOn ? new Date(issuedOn) : null;
 

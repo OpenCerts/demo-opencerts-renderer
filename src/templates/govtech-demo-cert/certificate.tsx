@@ -120,7 +120,7 @@ const Page = styled("div") <{ certificateBg: string }>`
   }
 `;
 
-export const CertificateTemplate: FunctionComponent<TemplateProps<any>> = ({ document }) => (
+export const CertificateTemplate: FunctionComponent<TemplateProps<GovtechOpencertsTemplateCertificate>> = ({ document }) => (
   <Page certificateBg={`url('${certificateBg}')`} className="p-4">
     <PrintWatermark />
     <section className="text-center">
@@ -131,7 +131,7 @@ export const CertificateTemplate: FunctionComponent<TemplateProps<any>> = ({ doc
         <i>This is to certify that</i>
       </div>
       <div className="spacer text-lg">
-        <b>{(document as GovtechOpencertsTemplateCertificate).recipient.name}</b>
+        <b>{document.recipient.name}</b>
       </div>
       <div className="spacer text-md">
         <i>has successfully completed the</i>
