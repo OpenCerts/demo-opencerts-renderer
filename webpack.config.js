@@ -92,6 +92,7 @@ module.exports = {
     extensions: [".js", ".ts", ".tsx"],
     modules: ["node_modules", path.resolve(__dirname, "src")],
     alias: {
+      "@mattrglobal/node-bbs-signatures": false,
       react: path.resolve(__dirname, "node_modules/react"),
       "react-dom": path.resolve(__dirname, "node_modules/react-dom"),
       "react-dom/client": path.resolve(__dirname, "node_modules/react-dom/client"),
