@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 
 interface SimplePrivacyFilterBannerProps {
   /**
@@ -28,7 +28,7 @@ const style = css`
  */
 export const SimplePrivacyFilterBanner: FunctionComponent<SimplePrivacyFilterBannerProps> = ({
   onToggleEditable,
-  className = ""
+  className = "",
 }) => (
   <div css={style} className={className}>
     <div className="text-container">

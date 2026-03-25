@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { PrintWatermark } from "../templates/govtech-demo-cert/common/print-watermark";
-import { css, Global } from "@emotion/core";
+import { css, Global } from "@emotion/react";
 import React from "react";
 
 export const pageHeight = "29.7cm";
@@ -24,7 +24,7 @@ export const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
 `;
-export const PageContainer: React.FunctionComponent = ({ children }) => {
+export const PageContainer: React.FunctionComponent<React.PropsWithChildren> = ({ children }) => {
   return (
     <Container>
       <PrintWatermark />

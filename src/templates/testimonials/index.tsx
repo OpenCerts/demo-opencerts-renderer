@@ -5,14 +5,14 @@ export const templates = [
   {
     id: "testimonial",
     label: "Testimonial",
-    template: TestimonialTemplate
-  }
+    template: TestimonialTemplate,
+  },
 ];
 
 export const templates2 = [
   {
     id: "testimonial",
     label: "Testimonial",
-    template: TestimonialTemplate2
-  }
+    template: TestimonialTemplate2,
+  },
 ];

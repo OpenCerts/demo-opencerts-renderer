@@ -1,18 +1,22 @@
 import React, { FunctionComponent, useState } from "react";
 import { get } from "lodash";
+import { vc } from "@trustvc/trustvc";
 import { formatDate } from "./common/functions";
 import "bootstrap/dist/css/bootstrap.css";
 import "./common/demo-styles.css";
-import { ObfuscatableValue, TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
-import { GovtechOpencertsTemplateCertificate } from "../samples";
+import { ObfuscatableValue, TemplateProps } from "@trustvc/decentralized-renderer-react-components";
 import { PrintWatermark } from "./common/print-watermark";
 import transcriptBg from "./common/transcript-background.png";
 import { SimplePrivacyFilterBanner } from "./common/simple-privacy-filter-banner";
+import { getCertificatePayload, SupportedDocument } from "./types";
 
-export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechOpencertsTemplateCertificate>> = ({
-  document,
-  handleObfuscation
+export const TranscriptTemplate: FunctionComponent<TemplateProps<SupportedDocument>> = ({
+  document: rawDocument,
+  handleObfuscation = () => undefined,
 }) => {
+  const document = getCertificatePayload(rawDocument);
+  const isW3CVC = vc.isSignedDocument(rawDocument as object);
+  const showPrivacyBanner = !isW3CVC;
   const [editable, setEditable] = useState(false);
   const documentName = get(document, "name");
   const documentId = get(document, "id");
@@ -71,12 +75,14 @@ export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechOpencert
     <>
       <PrintWatermark />
       <div className="container">
-        <SimplePrivacyFilterBanner onToggleEditable={() => setEditable(!editable)} className="privacy-banner" />
+        {showPrivacyBanner && (
+          <SimplePrivacyFilterBanner onToggleEditable={() => setEditable(!editable)} className="privacy-banner" />
+        )}
         <div
           className="p-2 container"
           style={{
             backgroundImage: `url('${transcriptBg}')`,
-            backgroundRepeat: "repeat"
+            backgroundRepeat: "repeat",
           }}
         >
           <div className="row root cert-title" style={{ paddingLeft: "3%" }}>
@@ -87,7 +93,7 @@ export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechOpencert
             className="row transcript"
             style={{
               paddingTop: "3%",
-              paddingLeft: "2%"
+              paddingLeft: "2%",
             }}
           >
             <div className="col">
@@ -132,27 +138,27 @@ export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechOpencert
                 <div className="col">DATE OF ISSUANCE</div>
                 <div className="col">
                   :&nbsp;&nbsp;
-                  {formatDate(issuanceDate)}
+                  {formatDate(issuanceDate || "")}
                 </div>
               </div>
               <div className="row">
                 <div className="col">DATE OF ADMISSION</div>
                 <div className="col">
                   :&nbsp;&nbsp;
-                  {formatDate(admissionDate)}
+                  {formatDate(admissionDate || "")}
                 </div>
               </div>
               <div className="row">
                 <div className="col">DATE OF GRADUATION</div>
                 <div className="col">
                   :&nbsp;&nbsp;
-                  {formatDate(graduationDate)}
+                  {formatDate(graduationDate || "")}
                 </div>
               </div>
             </div>
           </div>
 
-          {transcriptData !== [] && (
+          {transcriptData.length > 0 && (
             <div className="row mb-4" style={{ paddingLeft: "3%", paddingTop: "5%" }}>
               <div className="root cert-title">
                 <b>Transcript</b>
@@ -193,7 +199,7 @@ export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechOpencert
                 paddingTop: "5%",
                 paddingRight: "5%",
                 width: "100%",
-                height: "auto"
+                height: "auto",
               }}
             >
               <img className="w-100" src={get(document, "additionalData.certSignatories[0].signature")} />

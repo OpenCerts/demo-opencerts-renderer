@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import React, { FunctionComponent } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./common/demo-styles.css";
-import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
+import { TemplateProps } from "@trustvc/decentralized-renderer-react-components";
 import { GovtechOpencertsTemplateCertificate } from "../samples";
 import { PrintWatermark } from "./common/print-watermark";
 import mainLogo from "./common/opencerts-logo.svg";
@@ -16,7 +16,7 @@ const Page = styled("div")<{ certificateBg: string }>`
   margin: 0 auto;
 
   position: relative;
-  background-image: ${props => props.certificateBg};
+  background-image: ${(props) => props.certificateBg};
   background-position: center;
   background-size: cover;
   border: 10px solid #324353;
@@ -121,7 +121,7 @@ const Page = styled("div")<{ certificateBg: string }>`
 `;
 
 export const CertificateTemplate: FunctionComponent<TemplateProps<GovtechOpencertsTemplateCertificate>> = ({
-  document
+  document,
 }) => (
   <Page certificateBg={`url('${certificateBg}')`} className="p-4">
     <PrintWatermark />

@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
+import { TemplateProps } from "@trustvc/decentralized-renderer-react-components";
 import "bootstrap/dist/css/bootstrap.css";
 import { GovtechOpencertsTemplateCertificate } from "../samples";
 

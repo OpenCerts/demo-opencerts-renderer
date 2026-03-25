@@ -1,14 +1,14 @@
 import React, { FunctionComponent } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./common/demo-styles.css";
-import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
+import { TemplateProps } from "@trustvc/decentralized-renderer-react-components";
 import { GovtechOpencertsTemplateCertificate } from "../samples";
 import { CertificateTemplate } from "./certificate";
 import { TranscriptTemplate } from "./transcript";
 
 export const PrintTemplate: FunctionComponent<TemplateProps<GovtechOpencertsTemplateCertificate>> = ({
   document,
-  handleObfuscation
+  handleObfuscation,
 }) => (
   <>
     <CertificateTemplate document={document} handleObfuscation={handleObfuscation} />
