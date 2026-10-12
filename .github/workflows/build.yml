@@ -2,11 +2,9 @@ name: Build
 on:
   push:
     branches:
-      - imda
       - develop
   pull_request:
     branches:
-      - imda
       - develop
 jobs:
   build:
