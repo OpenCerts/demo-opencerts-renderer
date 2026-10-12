@@ -8,7 +8,8 @@ import { TemplateProps } from "@trustvc/decentralized-renderer-react-components"
 import { PrintWatermark } from "./common/print-watermark";
 import mainLogo from "./common/opencerts-logo.svg";
 import certificateBg from "./common/certificate-background.png";
-import { getCertificatePayload, SupportedDocument } from "./types";
+import { CertificatePayload, SupportedDocument } from "./types";
+import { getDocumentData } from "../../utils";
 
 const Page = styled("div")<{ certificateBg: string }>`
   max-width: 297mm;
@@ -120,7 +121,7 @@ const Page = styled("div")<{ certificateBg: string }>`
 `;
 
 export const CertificateTemplate: FunctionComponent<TemplateProps<SupportedDocument>> = ({ document }) => {
-  const subject = getCertificatePayload(document);
+  const subject = getDocumentData(document) as CertificatePayload;
   const issuedOn = get(subject, "issuedOn");
   const issuedOnDate = issuedOn ? new Date(issuedOn) : null;
 

@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { TemplateProps } from "@trustvc/decentralized-renderer-react-components";
 import { TestimonialCertificate } from "../samples";
+import { getDocumentData } from "../../utils";
 import { css } from "@emotion/react";
 import { Page, PageContainer, pageHeight, pageWidth } from "../../components/page";
 import banner from "./testimonial-2-banner.jpg";
@@ -11,7 +12,7 @@ const footerHeight = "2cm";
 const contentHeight = `calc(${pageHeight} - ${headerHeight} - ${footerHeight})`;
 
 export const TestimonialTemplate2: FunctionComponent<TemplateProps<any>> = ({ document }) => {
-  const typedDocument = document as TestimonialCertificate;
+  const typedDocument = getDocumentData(document) as TestimonialCertificate;
   return (
     <PageContainer>
       <Page>

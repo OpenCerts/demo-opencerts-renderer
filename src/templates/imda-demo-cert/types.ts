@@ -34,22 +34,3 @@ export type CertificatePayload = {
     }>;
   };
 };
-
-type W3CDocumentWithSubject = SignedVerifiableCredential & {
-  credentialSubject?: CertificatePayload | CertificatePayload[];
-};
-
-const hasCredentialSubject = (document: SupportedDocument): document is W3CDocumentWithSubject => {
-  return "credentialSubject" in document;
-};
-
-export const getCertificatePayload = (document: SupportedDocument): CertificatePayload => {
-  if (hasCredentialSubject(document)) {
-    const credentialSubject = Array.isArray(document.credentialSubject)
-      ? document.credentialSubject[0]
-      : document.credentialSubject;
-    return credentialSubject ?? {};
-  }
-
-  return document as CertificatePayload;
-};

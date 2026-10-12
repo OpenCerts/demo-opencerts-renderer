@@ -5,15 +5,17 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./common/demo-styles.css";
 import { ObfuscatableValue, TemplateProps } from "@trustvc/decentralized-renderer-react-components";
 import { GovtechOpencertsTemplateCertificate } from "../samples";
+import { getDocumentData } from "../../utils";
 import { PrintWatermark } from "./common/print-watermark";
 import govtechLogo from "./common/govtech-logo.png";
 import transcriptBg from "./common/transcript-background.png";
 import { SimplePrivacyFilterBanner } from "./common/simple-privacy-filter-banner";
 
 export const TranscriptTemplate: FunctionComponent<TemplateProps<GovtechOpencertsTemplateCertificate>> = ({
-  document,
+  document: rawDocument,
   handleObfuscation = () => undefined,
 }) => {
+  const document: GovtechOpencertsTemplateCertificate = getDocumentData(rawDocument);
   const [editable, setEditable] = useState(false);
   const documentName = get(document, "name");
   const documentId = get(document, "id");

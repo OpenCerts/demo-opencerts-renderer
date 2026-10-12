@@ -8,13 +8,14 @@ import { ObfuscatableValue, TemplateProps } from "@trustvc/decentralized-rendere
 import { PrintWatermark } from "./common/print-watermark";
 import transcriptBg from "./common/transcript-background.png";
 import { SimplePrivacyFilterBanner } from "./common/simple-privacy-filter-banner";
-import { getCertificatePayload, SupportedDocument } from "./types";
+import { CertificatePayload, SupportedDocument } from "./types";
+import { getDocumentData } from "../../utils";
 
 export const TranscriptTemplate: FunctionComponent<TemplateProps<SupportedDocument>> = ({
   document: rawDocument,
   handleObfuscation = () => undefined,
 }) => {
-  const document = getCertificatePayload(rawDocument);
+  const document = getDocumentData(rawDocument) as CertificatePayload;
   const isW3CVC = vc.isSignedDocument(rawDocument as object);
   const showPrivacyBanner = !isW3CVC;
   const [editable, setEditable] = useState(false);

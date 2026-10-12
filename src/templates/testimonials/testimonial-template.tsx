@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { TemplateProps } from "@trustvc/decentralized-renderer-react-components";
 import { TestimonialCertificate } from "../samples";
+import { getDocumentData } from "../../utils";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import moeLogo from "./moe-ministry-of-education-singapore.png";
@@ -39,7 +40,7 @@ const CustomPage = styled(Page)`
 `;
 
 export const TestimonialTemplate: FunctionComponent<TemplateProps<any>> = ({ document }) => {
-  const typedDocument = document as TestimonialCertificate;
+  const typedDocument = getDocumentData(document) as TestimonialCertificate;
   return (
     <PageContainer>
       <CustomPage>

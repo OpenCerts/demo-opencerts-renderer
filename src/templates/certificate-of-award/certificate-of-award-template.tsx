@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { TemplateProps } from "@trustvc/decentralized-renderer-react-components";
 import { CertificateOfAward } from "../samples";
+import { getDocumentData } from "../../utils";
 import { css } from "@emotion/react";
 import moeLogo from "./moe-ministry-of-education-singapore.svg";
 import cccLogo from "./citizens-consultative-committees.png";
@@ -31,8 +32,8 @@ const isCertificateOfAward = (document: unknown): document is CertificateOfAward
 };
 
 export const CertificateOfAwardTemplate: FunctionComponent<TemplateProps<any>> = ({ document }) => {
-  if (!isCertificateOfAward(document)) return null;
-  const doc = document;
+  const doc = getDocumentData(document);
+  if (!isCertificateOfAward(doc)) return null;
   return (
     <PageContainer>
       <Page>

@@ -1,0 +1,55 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://trustvc.io/context/render-method-context-v2.json",
+    "https://schema.opencerts.io/testimonials/2.0/context.json"
+  ],
+  "type": ["VerifiableCredential"],
+  "issuer": {
+    "id": "did:web:isaackps.com",
+    "name": "Ministry of Education",
+    "uen": "U18274928E",
+    "url": "https://www.moe.gov.sg",
+    "email": "registrar@moe.gov.sg"
+  },
+  "validFrom": "2018-08-01T00:00:00+08:00",
+  "renderMethod": [
+    {
+      "id": "https://demo-renderer.opencerts.io",
+      "type": "EMBEDDED_RENDERER",
+      "templateName": "testimonials"
+    }
+  ],
+  "credentialSubject": {
+    "id": "did:example:s1234567j",
+    "type": ["Testimonial"],
+    "name": "School Graduation Certificate Testimonial",
+    "description": "SGC Testimonial",
+    "content": "Content of the Testimonial",
+    "recipient": {
+      "name": "John Doe",
+      "nric": "S1234567J",
+      "studentId": "12345"
+    },
+    "testimonial": {
+      "role": "chairman",
+      "instituteName": "ABC Junior College",
+      "achievementArea": "No Idea",
+      "achievementDate": "2016-11-21"
+    },
+    "referee": {
+      "name": "Mrs Jane Doe",
+      "designation": "Director-General of Education Singapore",
+      "relationship": "teacher"
+    }
+  },
+  "id": "urn:uuid:01a12f2f-2797-7991-969a-b2d04ff20f13",
+  "proof": {
+    "type": "DataIntegrityProof",
+    "created": "2026-10-12T08:16:21Z",
+    "verificationMethod": "did:web:isaackps.com#keys-1",
+    "cryptosuite": "ecdsa-sd-2023",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "u2V0AhVhA6kidZJ3wH3Mtc9EkDjMYMHE4lUnE5eCqD67ZJG7xAdRx2taNhb5uW688DD2V_nESj00cB2RlGeumdNBrqG8JzVgjgCQC7RGVndl47F3dBd5scm51FcHopa4DfOTSXEHIQJgOxXJYIArLJLr73Wa6gQvE2c-N8L9kH2Ey8s02zpYyvFxShyxxlVhAB0S2lkUqcMK6fuYlaPhw_dtljCsGtlFPRmmUykCJkKD5Qbuj3n4tYDvqwLl4Elg7l0njdpMj2zlr7KFV6DY1wVhASB7n7HNdCHeVd-7mzx4rf0-khyxQ0f1rEVjKYtU6byBTYjroUG4TnNbCYsuuk4ue6NuQTHVzf1cTleFDDF6ua1hAFKQ561IcIWsTLRLeTxDh-VORpsdeYwah-pHDaxypZEM2PGqHRf6MNdJKR0F5n4Plb7lrQdLJqwLUkKnY3sntkVhAiuiHrIRDon6FxJc1s1dTVjP-voeEHbybJ310F6-ZGiU0KMAoVoweKLI0-udb4HD1bnm25j8Qd7mBEOjhrIVMnlhA69uazu8JgovYXibW7e2XTC_OCPA375PRKwnUba0rOGIiTAm3D50Us8sbV71c0LTgyceRXmhmcOgrNWQFlgrMbFhA76znFxvD22TQAhkJDrebak69hiKmAq17e7oG0oBRzUACUKHpptr3NsmOT_okdULbv-fbtmGUOaxilFTf7xdV0lhAR-sRWU6UMIil7Rq3TLrmGz44lU4XGBihztj8oTwX6MIlcX-r0HmxcwH-pGglrVrdsqBezxPvas_kIP1-JHhQH1hApwzKIYPzwHaH9sNjmOsVjAbgdvZGPXeItgpFCpb7FO9AJo0pcJf2PcFkSGcukMjTkuDPMUwjF7H24pNDxevGnFhA1pCqZtpNR8bGHOkCfDUldQ0oURP0z6XOWFX42_y_eGEEzmdMthjLCjTg610cegil4yAIHxE_xMykOwY_9yzS3lhAojMFMhxZ0NTN3X5yAGaHyqybmYawcMmijBNXrBSuJVK3V3IkwVg-dGtbYTklWHKXpsvazmv1blDbc3W95v8L3lhAPXw-kWv28gu1dCqedYipfml17reKkGaDLWk-I-f-Wx1Z1CW2HoA5acOLxdQktjTWF7XlOHHIXGSRuLOpMIveTlhArkVF4xl2YvBl5cwJxQZT0umE4MZYkJEzlZZF1gJEI0ccfxUrlJaUF4pBmR4w90qTVwswufqMtokvbwks_sghDlhAtOYDTOnt_m3wQsJE05U6c5EMHsNavthhdlrsyKyQrj8VCgvKKftUKWE6ZXOJCRO7rV-53uJIyUHe-flJiKAhVVhA7FHtYgXa_pMfimUWL9qZvGrzouwbcS2AoeC-XLh2j7DbvUVd1V9TU1ZELtL-SUZoa7ItOlKBjK4sdmvOhLyx4FhA-WtOZtTgBhnhQLxbFupi_ra40Wi2koPMCFRBDmNwiYLpbIjIWvTunJNGWwA1YhDSwEu1VRdwZUlHw75Wc_s4RVhAw29Qd3v3DchTKDnz1JW_-QfH_hpl2P78qt8qwlLA-KBWhkC3RjO8_YC0tmuofw7TV9RujjnUQBpOEDylFhZIr1hAA1yUl1Z1-kqtbSZnIaR3HEnHQbE1Ll2T_Lt_h63g2cZ8vej4Bko0AhbpGckRHnDlsC0wcrgdfcHNcRwmNC3OBFhAroAioBKplgXA7ROLFD9AVcOIX4WfON9MiIEXmtgQYixNywkZvOBHMQcaaVST7ybT2Ep3Fp5XA17wKiGT8Sj7vFhAnIcHWQoyb2gcCsxIfgqQF996zTlRocuokpF-zQDCiNdON5ff7UONirjugZxAH36pbyjKHqmvA0KpIKq7SFltO1hA1PJo_KpzI40sPN0mxjDUhMuC3kaOnREBvFVKtGQQpHV1AcmrCrUxVtdDPMju1KWYReDfft7gY9ZbemYa8g1gLVhA0Kfs5z_yz-btQBWinT56-F8XV-VdUBTXByoReOkUhDSn5NDNfptkiNtB6NPTuPsOgEJ4ynHpl5T-1OdRg3vG_YJnL2lzc3VlcmovdmFsaWRGcm9t"
+  }
+}
