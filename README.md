@@ -54,6 +54,15 @@ You will need to provide credentials for github and npm.
 - shared components are located in `src/core` folder. For instance you can find a watermark example that will be displayed when printing the document
 - feel free to remove whatever you dont need
 
+## Document data (OA v2 and W3C VC)
+
+Every template reads its data through `getDocumentData` (`src/utils/index.ts`), so the same template renders both document types:
+
+- **OA v2** (raw, as passed by the renderer): the document itself. Wrapped OA v2 is unwrapped with `getDataV2`.
+- **W3C VC** (signed or raw, VC 1.1 or 2.0) and OA v3: `credentialSubject` (the first entry if it is an array). Any document with both `@context` and `credentialSubject` is treated as a VC.
+
+W3C VCs keep their issue date at the top level, so the returned VC data gets a synthesized `issuedOn`: `credentialSubject.issuedOn` if present, else `validFrom` (VC 2.0), else `issuanceDate` (VC 1.1). If there is no date at all, templates render no date instead of "Invalid Date".
+
 ## Features
 
 - [**React**](http://reactjs.org/) - A JavaScript library for building user interfaces.

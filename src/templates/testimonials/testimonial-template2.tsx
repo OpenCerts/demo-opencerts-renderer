@@ -12,7 +12,8 @@ const footerHeight = "2cm";
 const contentHeight = `calc(${pageHeight} - ${headerHeight} - ${footerHeight})`;
 
 export const TestimonialTemplate2: FunctionComponent<TemplateProps<any>> = ({ document }) => {
-  const typedDocument = getDocumentData(document) as TestimonialCertificate;
+  const data = getDocumentData(document) as Partial<TestimonialCertificate>;
+  const typedDocument = { ...data, referee: data.referee ?? ({} as TestimonialCertificate["referee"]) };
   return (
     <PageContainer>
       <Page>
@@ -36,13 +37,15 @@ export const TestimonialTemplate2: FunctionComponent<TemplateProps<any>> = ({ do
             `}
           >
             {/* this is not correct, because of TZ, but it's a demo :)*/}
-            {new Date(typedDocument.issuedOn).toLocaleDateString(undefined, {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
+            {typedDocument.issuedOn
+              ? new Date(typedDocument.issuedOn).toLocaleDateString(undefined, {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })
+              : null}
           </p>
-          <div className="text-justify" dangerouslySetInnerHTML={{ __html: typedDocument.content }} />
+          <div className="text-justify" dangerouslySetInnerHTML={{ __html: typedDocument.content ?? "" }} />
           <div>
             <div>
               <img

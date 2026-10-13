@@ -167,7 +167,9 @@ export const CertificateTemplate: FunctionComponent<TemplateProps<GovtechOpencer
           </div>
           <div className="col" />
           <div className="col">
-            <div className="text-sm text-right">Dated {format(document.issuedOn, "DD/MM/YYYY")}</div>
+            <div className="text-sm text-right">
+              {document.issuedOn ? `Dated ${format(document.issuedOn, "DD/MM/YYYY")}` : ""}
+            </div>
           </div>
         </div>
       </section>

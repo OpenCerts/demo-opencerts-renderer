@@ -40,7 +40,13 @@ const CustomPage = styled(Page)`
 `;
 
 export const TestimonialTemplate: FunctionComponent<TemplateProps<any>> = ({ document }) => {
-  const typedDocument = getDocumentData(document) as TestimonialCertificate;
+  const data = getDocumentData(document) as Partial<TestimonialCertificate>;
+  const typedDocument = {
+    ...data,
+    recipient: data.recipient ?? ({} as TestimonialCertificate["recipient"]),
+    testimonial: data.testimonial ?? ({} as TestimonialCertificate["testimonial"]),
+    referee: data.referee ?? ({} as TestimonialCertificate["referee"]),
+  };
   return (
     <PageContainer>
       <CustomPage>
@@ -110,7 +116,7 @@ export const TestimonialTemplate: FunctionComponent<TemplateProps<any>> = ({ doc
           <div>Identification No: {typedDocument.recipient.studentId}</div>
           <div className="institute">{typedDocument.testimonial.instituteName}</div>
           <div className="year-of-graduation">
-            Year of Graduation: {typedDocument.testimonial.achievementDate.split("-")[0]}
+            Year of Graduation: {typedDocument.testimonial.achievementDate?.split("-")[0]}
           </div>
           <div className="information">
             <div>This School Graduation Certificates provides a hlistic qualitative</div>
@@ -188,7 +194,7 @@ export const TestimonialTemplate: FunctionComponent<TemplateProps<any>> = ({ doc
             padding: 1cm 2cm;
           `}
           className="text-justify"
-          dangerouslySetInnerHTML={{ __html: typedDocument.content }}
+          dangerouslySetInnerHTML={{ __html: typedDocument.content ?? "" }}
         />
         <Separator>
           MINISTRY OF EDUCATION MINISTRY OF EDUCATION MINISTRY OF EDUCATION MINISTRY OF EDUCATION MINISTRY OF EDUCATION
