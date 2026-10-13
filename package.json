@@ -198,9 +198,38 @@
     "coverageDirectory": "coverage",
     "moduleNameMapper": {
       "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css|less)$": "<rootDir>/__mocks__/fileMock.js"
+      "\\.(css|less)$": "<rootDir>/__mocks__/fileMock.js",
+      "^cborg$": "<rootDir>/node_modules/cborg/cborg.js"
     },
-    "globalSetup": "<rootDir>/jest.global-setup.js"
+    "globalSetup": "<rootDir>/jest.global-setup.js",
+    "setupFiles": [
+      "<rootDir>/jest.setup-env.js"
+    ],
+    "transform": {
+      "\\.[jt]sx?$": [
+        "babel-jest",
+        {
+          "babelrc": false,
+          "configFile": false,
+          "presets": [
+            [
+              "@babel/preset-env",
+              {
+                "targets": {
+                  "node": "current"
+                }
+              }
+            ],
+            "@babel/preset-typescript",
+            "@babel/preset-react",
+            "@emotion/babel-preset-css-prop"
+          ]
+        }
+      ]
+    },
+    "transformIgnorePatterns": [
+      "/node_modules/(?!(multiformats|uint8arrays|@noble|@scure|@digitalbazaar|base58-universal|ky|ky-universal|@multiformats|varint|base-x|base64url-universal|cborg)/)"
+    ]
   },
   "prettier": {
     "printWidth": 120
