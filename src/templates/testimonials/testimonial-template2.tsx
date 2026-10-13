@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { TemplateProps } from "@trustvc/decentralized-renderer-react-components";
 import { TestimonialCertificate } from "../samples";
+import { getDocumentData } from "../../utils";
 import { css } from "@emotion/react";
 import { Page, PageContainer, pageHeight, pageWidth } from "../../components/page";
 import banner from "./testimonial-2-banner.jpg";
@@ -11,7 +12,8 @@ const footerHeight = "2cm";
 const contentHeight = `calc(${pageHeight} - ${headerHeight} - ${footerHeight})`;
 
 export const TestimonialTemplate2: FunctionComponent<TemplateProps<any>> = ({ document }) => {
-  const typedDocument = document as TestimonialCertificate;
+  const data = getDocumentData(document) as Partial<TestimonialCertificate>;
+  const typedDocument = { ...data, referee: data.referee ?? ({} as TestimonialCertificate["referee"]) };
   return (
     <PageContainer>
       <Page>
@@ -35,13 +37,15 @@ export const TestimonialTemplate2: FunctionComponent<TemplateProps<any>> = ({ do
             `}
           >
             {/* this is not correct, because of TZ, but it's a demo :)*/}
-            {new Date(typedDocument.issuedOn).toLocaleDateString(undefined, {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
+            {typedDocument.issuedOn
+              ? new Date(typedDocument.issuedOn).toLocaleDateString(undefined, {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })
+              : null}
           </p>
-          <div className="text-justify" dangerouslySetInnerHTML={{ __html: typedDocument.content }} />
+          <div className="text-justify" dangerouslySetInnerHTML={{ __html: typedDocument.content ?? "" }} />
           <div>
             <div>
               <img
