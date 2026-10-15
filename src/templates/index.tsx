@@ -5,14 +5,25 @@ import { templates as certificateOfAwardTemplates } from "./certificate-of-award
 import { TemplateRegistry } from "@trustvc/decentralized-renderer-react-components";
 
 export const registry: TemplateRegistry<any> = {
-  // @trustvc/decentralized-renderer-react-components (unlike the previous @govtechsg 2.0.3 library) does not fall
-  // back to `registry.default` for an unknown template name; it shows a raw JSON dump instead. OpenCerts documents
-  // (and the opencerts-website e2e fixtures) use "CUSTOM_TEMPLATE", so map it explicitly.
   default: govtechDemoTemplates,
-  CUSTOM_TEMPLATE: govtechDemoTemplates,
   GOVTECH_DEMO: govtechDemoTemplates,
   TESTIMONIALS: testimonialsTemplates,
   TESTIMONIALS2: testimonialsTemplates2,
   CERTIFICATE_OF_AWARD: certificateOfAwardTemplates,
   OPENCERTS_DEMO: imdaDemoTemplates,
 };
+
+/**
+ * The previous @govtechsg/decentralized-renderer-react-components (2.0.3) rendered `registry.default` for any template
+ * name that is not a registry key. @trustvc/decentralized-renderer-react-components looks templates up with
+ * `templateRegistry[name] || [defaultTemplate]` and ignores `registry.default`, so unknown names (for example the
+ * "CUSTOM_TEMPLATE" used by OpenCerts documents) end up as a raw JSON dump. This wrapper restores the old behaviour:
+ * any unknown template name resolves to `registry.default`.
+ */
+export const withDefaultFallback = (templates: TemplateRegistry<any>): TemplateRegistry<any> =>
+  new Proxy(templates, {
+    get: (target, name, receiver) =>
+      typeof name === "string" && !(name in target) ? target.default : Reflect.get(target, name, receiver),
+  });
+
+export const registryWithDefault = withDefaultFallback(registry);
