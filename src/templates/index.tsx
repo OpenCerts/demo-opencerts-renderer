@@ -13,17 +13,10 @@ export const registry: TemplateRegistry<any> = {
   OPENCERTS_DEMO: imdaDemoTemplates,
 };
 
-/**
- * The previous @govtechsg/decentralized-renderer-react-components (2.0.3) rendered `registry.default` for any template
- * name that is not a registry key. @trustvc/decentralized-renderer-react-components looks templates up with
- * `templateRegistry[name] || [defaultTemplate]` and ignores `registry.default`, so unknown names (for example the
- * "CUSTOM_TEMPLATE" used by OpenCerts documents) end up as a raw JSON dump. This wrapper restores the old behaviour:
- * any unknown template name resolves to `registry.default`.
- */
-export const withDefaultFallback = (templates: TemplateRegistry<any>): TemplateRegistry<any> =>
-  new Proxy(templates, {
-    get: (target, name, receiver) =>
-      typeof name === "string" && !(name in target) ? target.default : Reflect.get(target, name, receiver),
-  });
-
-export const registryWithDefault = withDefaultFallback(registry);
+// @govtechsg/decentralized-renderer-react-components 2.0.3 (used on `imda`) rendered `registry.default` for any template
+// name that is not a registry key. @trustvc/decentralized-renderer-react-components only does `registry[name] || a
+// built-in JSON view` and never reads `registry.default`, so unknown names (e.g. "CUSTOM_TEMPLATE" in OpenCerts
+// documents) show raw JSON. Resolve unknown string names to `registry.default` to keep the old behaviour.
+export const registryWithDefault: TemplateRegistry<any> = new Proxy(registry, {
+  get: (target, name) => (typeof name === "string" && !(name in target) ? target.default : target[name as string]),
+});
